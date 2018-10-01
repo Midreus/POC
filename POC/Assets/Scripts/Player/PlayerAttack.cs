@@ -61,6 +61,11 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        if(Time.timeScale == 0)
+        {
+            return;
+        }
+
         Vector3 rawMousePos2 = Input.mousePosition;
         Vector3 mousePos2 = Camera.main.ScreenToWorldPoint(rawMousePos2);
 

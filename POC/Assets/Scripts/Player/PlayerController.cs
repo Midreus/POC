@@ -56,6 +56,11 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if(Time.timeScale == 0)
+        {
+            return;
+        }
+
         if(this.gameObject.GetComponent<PlayerCollision>().hitSide == false && anim.GetBool("isReadySling") == false && anim.GetBool("isInAir") == false && this.gameObject.GetComponent<slingShot>().isClicked == false && anim.GetBool("isGettingHit") == false)
         {
             //if (Input.GetButtonDown("Fire1") && this.gameObject.GetComponent<slingShot>().isClicked == false)//defaults to left mouse button
@@ -119,7 +124,7 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isWalking", true);
             //anim.Play(walking);
-            rig2D.AddForce(Vector2.right * (delta.x / Mathf.Abs(delta.x)) * moveForce);
+            rig2D.AddForce(Vector2.right * (delta.x / Mathf.Abs(delta.x)) * (moveForce * Time.deltaTime*60));
         }
         else if (Mathf.Abs(delta.x) < threshold)
         {
