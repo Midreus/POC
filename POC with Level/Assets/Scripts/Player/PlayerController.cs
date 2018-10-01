@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isWalking", true);
             //anim.Play(walking);
-            rig2D.AddForce(Vector2.right * (delta.x / Mathf.Abs(delta.x)) * moveForce);
+            rig2D.AddForce(Vector2.right * (delta.x / Mathf.Abs(delta.x)) * (moveForce*Time.deltaTime*60f));
         }
         else if (Mathf.Abs(delta.x) < threshold)
         {
